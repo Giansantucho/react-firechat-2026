@@ -17,8 +17,10 @@ const AuthLayout = () => {
   
   
   return (
-    <div>
-      <Outlet></Outlet>
+    <div className=" min-h-screenflex items-center justify-center bg-gray-100">
+      <div className="max-w-md w-full">
+        <Outlet />
+      </div>
     </div>
   )
 }
