@@ -35,9 +35,9 @@ const CardFooterAuth = ({ type, loading }: CardFooterAuthProps) => {
         </Button>
         <p className="text-center text-sm text-muted-foreground">
           {isLogin ? "Don't have an account?" : "Already have an account?"}
-          <Link to="isLogin ? '/register' : '/login'" className="ml-1 underline">
+          <Link to={isLogin ? "/auth/register" : "/auth/login"} className="ml-1 underline">
             <Button variant="link" className="p-0 h-auto font-normal">
-              {isLogin ? "Register" : "Login"}
+                {isLogin ? "Register" : "Login"}
             </Button>
           </Link>
         </p>
