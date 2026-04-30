@@ -2,6 +2,7 @@ import type { LastMessage, Message } from "@/schemas/room.schema";
 import {
   addDoc,
   collection,
+  CollectionReference,
   doc,
   orderBy,
   query,
@@ -15,14 +16,17 @@ export const useMessageActions = (roomId: string) => {
 
   const db = useFirestore();
 
-  const messageRef = collection(db, "rooms", roomId, "messages");
+  const messageRef = collection(db, "rooms", roomId, "messages") as CollectionReference<Message>;;
 
   const messageQuery = query(messageRef, orderBy("timestamp", "asc"));
 
-  const { data: messages } = useFirestoreCollectionData(messageQuery, {
+  const { data: messages } = useFirestoreCollectionData(
+  messageQuery,
+  {
     suspense: true,
     idField: "id",
-  });
+  }
+);
 
   const sendMessage = async (text: string) => {
     if (!user) throw new Error("useMessageActions: No existe usuario");
