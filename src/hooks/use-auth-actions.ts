@@ -2,6 +2,7 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithP
 import { GoogleAuthProvider } from "firebase/auth";
 import { useState } from "react";
 import { useAuth } from "reactfire";
+import { useUserActions } from "./use-user-actions";
 
 interface AuthActionResponse{
     success: boolean;
@@ -12,6 +13,8 @@ export const useAuthActions = () => {
 
     const [loading, setLoading] = useState(false);
     const auth = useAuth();
+
+    const {createOrUpdateUser} = useUserActions()
 
     const login = async (data: {email: string; password: string}) : Promise<AuthActionResponse>=> {
         
@@ -47,10 +50,11 @@ export const useAuthActions = () => {
             
             if(currentUser.user){
                 await updateProfile(currentUser.user, { displayName: data.displayName });
-
-                await currentUser.user.reload();
+                
             }
 
+            await createOrUpdateUser(currentUser.user)
+                await currentUser.user.reload();
            
            
             return{
@@ -78,7 +82,9 @@ export const useAuthActions = () => {
 
         try{ 
             const provider = new GoogleAuthProvider();
-            await signInWithPopup(auth, provider);
+            const data = await signInWithPopup(auth, provider);
+            await createOrUpdateUser(data.user)
+            
             return{
                 success: true,
                 error: null

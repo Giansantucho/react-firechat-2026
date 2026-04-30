@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { useUser } from "reactfire";
 import { updateProfile, type AuthError } from "firebase/auth";
+import { useUserActions } from "./use-user-actions";
+
 
 export const useProfileActions = () => {
 
 
 const [loading, setLoading] = useState(false);
 const {data: user} = useUser();
+const {createOrUpdateUser} = useUserActions()
 
 const updateUserProfile = async (data: {
     displayName?: string;
@@ -23,6 +26,7 @@ const updateUserProfile = async (data: {
             photoURL: data.photoURL || user.photoURL
 
         });
+        await createOrUpdateUser({...user, ...data});
         return {success: true,}
     } catch (error) {
         console.error("Error updating profile:", error);
