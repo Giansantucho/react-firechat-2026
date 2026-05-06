@@ -47,51 +47,79 @@ const LoginPage = () => {
   
 
   return (
-    <Card className="">
+  <div className="h-screen flex items-center justify-center">
+    <Card className="w-full max-w-md">
       <CardHeader>
         <CardTitle className="text-center">Login</CardTitle>
-        <CardDescription className="text-center">Login to your account or with Google</CardDescription>
-
+        <CardDescription className="text-center">
+          Login to your account or with Google
+        </CardDescription>
       </CardHeader>
+
       <CardContent>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="space-y-8"
+          >
             <FormField
               control={form.control}
-              name="email" render ={({field}) => (
+              name="email"
+              render={({ field }) => (
                 <FormItem>
-                   <FormLabel>Email</FormLabel> 
-                    <FormControl>
-                      <Input type = "email" placeholder="Enter your email" {...field} />
-                    </FormControl>
-                    <FormMessage name="email"/>
+                  <FormLabel>Email</FormLabel>
+
+                  <FormControl>
+                    <Input
+                      type="email"
+                      placeholder="Enter your email"
+                      {...field}
+                    />
+                  </FormControl>
+
+                  <FormMessage name="email" />
                 </FormItem>
               )}
-              
-              />
-              <FormField
+            />
+
+            <FormField
               control={form.control}
-              name="password" render ={({field}) => (
+              name="password"
+              render={({ field }) => (
                 <FormItem>
-                   <FormLabel>Password</FormLabel> 
-                    <FormControl>
-                      <Input type = "password" placeholder="********" {...field} />
-                    </FormControl>
-                    <FormMessage name="password"/>
+                  <FormLabel>Password</FormLabel>
+
+                  <FormControl>
+                    <Input
+                      type="password"
+                      placeholder="********"
+                      {...field}
+                    />
+                  </FormControl>
+
+                  <FormMessage name="password" />
                 </FormItem>
               )}
-              
-              />
-          <Button type="submit" className="w-full" disabled={loading}>
-            {loading ? "Logging in..." : "Login"}
-          </Button>
+            />
+
+            <Button
+              type="submit"
+              className="w-full"
+              disabled={loading}
+            >
+              {loading ? "Logging in..." : "Login"}
+            </Button>
           </form>
         </Form>
       </CardContent>
-      <CardFooterAuth type="login" loading={loading} />
-      
+
+      <CardFooterAuth
+        type="login"
+        loading={loading}
+      />
     </Card>
-  )
+  </div>
+);
 }
 
 export default LoginPage
