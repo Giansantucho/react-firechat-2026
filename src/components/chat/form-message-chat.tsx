@@ -59,7 +59,7 @@ const FormMessageChat = ({roomId}: Props) => {
           control={form.control}
           name="text"
           render={({ field }) => (
-            <FormItem className="flex-1">
+            <FormItem>
               <FormControl>
                 <Input
                   placeholder="Escribe un mensaje…"
@@ -74,7 +74,7 @@ const FormMessageChat = ({roomId}: Props) => {
         <Button
           type="submit"
           size="icon"
-          disabled={isLoading || !form.watch("text")?.trim()}
+          disabled={isLoading /*|| !form.watch("text")?.trim()*/}
           aria-label="Enviar mensaje"
           title="Enviar"
         >

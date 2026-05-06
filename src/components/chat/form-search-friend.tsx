@@ -54,8 +54,8 @@ const FormSearchFriend = ({handleClickRoomId}: Props) => {
             <FormField
               control={form.control}
               name="email" render ={({field}) => (
-                <FormItem className="flex-1">
-                   <FormLabel className="sr-only">Email</FormLabel> 
+                <FormItem>
+                   <FormLabel>Email</FormLabel> 
                     <FormControl>
                       <Input placeholder="Email del amigo…" autoComplete="email" {...field} />
                     </FormControl>
