@@ -45,3 +45,9 @@ export const messageZodSchema = z.object({
 })
 
 export type MessageZodSchemaType = z.infer<typeof messageZodSchema>
+
+export const findFriendZodSchema = z.object({
+  email: z.string().trim().pipe(z.email("Invalid email format")),
+});
+
+export type FindFriendZodSchemaType = z.infer<typeof findFriendZodSchema>;
