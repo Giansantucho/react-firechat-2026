@@ -50,14 +50,14 @@ const FormSearchFriend = ({handleClickRoomId}: Props) => {
   
     return (
     <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="flex gap-2">
             <FormField
               control={form.control}
               name="email" render ={({field}) => (
-                <FormItem>
-                   <FormLabel>Email</FormLabel> 
+                <FormItem className="flex-1">
+                   <FormLabel className="sr-only">Email</FormLabel> 
                     <FormControl>
-                      <Input placeholder="shadcn" {...field} />
+                      <Input placeholder="Email del amigo…" autoComplete="email" {...field} />
                     </FormControl>
                     <FormMessage name="email"/>
                 </FormItem>
@@ -65,7 +65,7 @@ const FormSearchFriend = ({handleClickRoomId}: Props) => {
               
               />
 
-          <Button type="submit" variant={"outline"} className="w-full" disabled = {isLoading}>
+          <Button type="submit" variant={"outline"} disabled = {isLoading}>
             {
               isLoading ? "Buscando friend" : "Buscar"
             }

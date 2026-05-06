@@ -13,6 +13,7 @@ import { Input } from "@/components/ui/input";
 import { useMessageActions } from "@/hooks/use-messages-actions";
 import { toast } from "sonner";
 import {useTransition } from "react";
+import { Send } from "lucide-react";
 
 
 interface Props{
@@ -33,9 +34,11 @@ const FormMessageChat = ({roomId}: Props) => {
       });
 
     async function onSubmit(values: MessageZodSchemaType){
+        const cleanText = values.text?.trim();
+        if(!cleanText) return;
         startTransition(async () => {
             try{
-            await sendMessage(values.text)
+            await sendMessage(cleanText)
             form.reset()
         }
         catch(error){
@@ -50,16 +53,16 @@ const FormMessageChat = ({roomId}: Props) => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-8"
+        className="flex items-end gap-2"
       >
         <FormField
           control={form.control}
           name="text"
           render={({ field }) => (
-            <FormItem>
+            <FormItem className="flex-1">
               <FormControl>
                 <Input
-                  placeholder="Ingrese mensaje"
+                  placeholder="Escribe un mensaje…"
                   {...field}
                 />
               </FormControl>
@@ -68,8 +71,14 @@ const FormMessageChat = ({roomId}: Props) => {
           )}
         />
         
-        <Button type="submit" disabled = {isLoading}>
-        {isLoading ? "ENVIANDO MENSAJE" : "ENVIAR"}
+        <Button
+          type="submit"
+          size="icon"
+          disabled={isLoading || !form.watch("text")?.trim()}
+          aria-label="Enviar mensaje"
+          title="Enviar"
+        >
+          <Send />
         </Button>
       </form>
     </Form>

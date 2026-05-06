@@ -3,15 +3,21 @@ import RoomChat from "./room-chat";
 
 interface Props {
   handleSelectedRoomId: (roomId: string) => void;
+  selectedRoomId?: string;
 }
 
-const ListRoomChat = ({ handleSelectedRoomId }: Props) => {
+const ListRoomChat = ({ handleSelectedRoomId, selectedRoomId }: Props) => {
   const { rooms } = useRoomActions();
 
   return (
-    <div>
+    <div className="space-y-1">
       {rooms.map((room) => (
-        <RoomChat key={room.id} room = {room} handleClickRoomId={handleSelectedRoomId}/>
+        <RoomChat
+          key={room.id}
+          room={room}
+          handleClickRoomId={handleSelectedRoomId}
+          isActive={selectedRoomId === room.id}
+        />
       ))}
       {/*<pre>{JSON.stringify(rooms, null, 2)}</pre>*/}
     </div>

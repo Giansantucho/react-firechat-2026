@@ -9,7 +9,7 @@ const MessagesChat = ({ roomId }: Props) => {
   const { messages } = useMessageActions(roomId);
 
   return (
-    <div className="space-y-2">
+    <div className="flex flex-col gap-2">
       {/* <pre>{JSON.stringify(messages, null, 2)}</pre> */}
       {messages.map((message) => (
         <MessageChat
