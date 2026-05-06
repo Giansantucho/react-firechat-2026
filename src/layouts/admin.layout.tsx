@@ -32,10 +32,11 @@ const AuthenticatedLayout = () => {
     suspense: true
   })
   return (
-    <div>
-      <Navbar></Navbar>
-      <div className="container mx-auto px-4"><Outlet></Outlet></div>
-      
+    <div className="min-h-screen bg-background">
+      <Navbar />
+      <main className="container mx-auto px-4">
+        <Outlet />
+      </main>
     </div>
   )
 }

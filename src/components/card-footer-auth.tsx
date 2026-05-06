@@ -1,4 +1,4 @@
-import { Button } from "D:/REACT TS NEXTJS/react7/src/components/ui/button.tsx";
+import { Button } from "@/components/ui/button";
 import {CardFooter} from "@/components/ui/card";
 import { toast } from "sonner";
 import { useAuthActions } from "@/hooks/use-auth-actions";

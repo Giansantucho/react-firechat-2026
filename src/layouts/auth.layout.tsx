@@ -17,8 +17,8 @@ const AuthLayout = () => {
   
   
   return (
-    <div className=" min-h-screenflex items-center justify-center bg-gray-100">
-      <div className="max-w-md w-full">
+    <div className="min-h-screen bg-background">
+      <div className="mx-auto flex min-h-screen max-w-md items-center px-4 py-10">
         <Outlet />
       </div>
     </div>

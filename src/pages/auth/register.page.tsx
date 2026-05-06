@@ -21,6 +21,7 @@ import { registerZodSchema, type RegisterZodSchemaType } from "@/lib/zod.schema"
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { UserPlus } from "lucide-react";
 
 const RegisterPage = () => {
   const { register, loading} = useAuthActions();
@@ -55,9 +56,12 @@ const RegisterPage = () => {
   };
 
   return (
-    <Card className="bg-white">
+    <Card>
       <CardHeader>
-        <CardTitle>Register</CardTitle>
+        <CardTitle className="flex items-center justify-center gap-2 text-center">
+          <UserPlus className="h-5 w-5 text-primary" />
+          Register
+        </CardTitle>
         <CardDescription>Create a new account</CardDescription>
       </CardHeader>
       <CardContent>

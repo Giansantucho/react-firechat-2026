@@ -16,6 +16,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import { LogIn } from "lucide-react";
 
 
 const LoginPage = () => {
@@ -49,7 +50,10 @@ const LoginPage = () => {
   return (
     <Card className="">
       <CardHeader>
-        <CardTitle className="text-center">Login</CardTitle>
+        <CardTitle className="flex items-center justify-center gap-2 text-center">
+          <LogIn className="h-5 w-5 text-primary" />
+          Login
+        </CardTitle>
         <CardDescription className="text-center">Login to your account or with Google</CardDescription>
 
       </CardHeader>

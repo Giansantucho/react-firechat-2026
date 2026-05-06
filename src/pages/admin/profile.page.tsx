@@ -1,5 +1,7 @@
 import FormProfile from "@/components/profile/form-profile"
 import { useUser } from "reactfire";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { User } from "lucide-react";
 
 const ProfilePage = () => {
   
@@ -11,9 +13,19 @@ const ProfilePage = () => {
 
   
   return (
-    <div>
-      <h1 className="text-2xl font-medium">Profile Page</h1>
-      <FormProfile user={user}/>
+    <div className="py-4">
+      <Card>
+        <CardHeader className="border-b">
+          <CardTitle className="flex items-center gap-2">
+            <User className="h-5 w-5 text-primary" />
+            Profile
+          </CardTitle>
+          <CardDescription>Actualiza tu información.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <FormProfile user={user}/>
+        </CardContent>
+      </Card>
     </div>
   )
 }
