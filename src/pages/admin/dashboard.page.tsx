@@ -1,13 +1,11 @@
-import { useAuthActions } from "@/hooks/use-auth-actions";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { LayoutDashboard, LogOut, Mail, User } from "lucide-react";
+import { LayoutDashboard, Mail, User } from "lucide-react";
 import { useUser } from "reactfire"
 
 const DashboardPage = () => {
   
   const {data: user} = useUser();
-  const {logout} = useAuthActions();
+ 
   
   return (
     <div className="py-4">
@@ -41,10 +39,7 @@ const DashboardPage = () => {
             </div>
           </div>
 
-          <Button variant="outline" onClick={logout} className="w-full sm:w-auto">
-            <LogOut className="h-4 w-4" />
-            Sign Out
-          </Button>
+          
         </CardContent>
       </Card>
     </div>
